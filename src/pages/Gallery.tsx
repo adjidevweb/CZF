@@ -4,8 +4,13 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingCallButton from "@/components/FloatingCallButton";
-import beforeImg from "@/assets/gallery-before-1.jpg";
-import afterImg from "@/assets/gallery-after-1.jpg";
+import gallery1 from "@/assets/gallery-1.png";
+import gallery2 from "@/assets/gallery-2.png";
+import gallery3 from "@/assets/gallery-3.png";
+import gallery4 from "@/assets/gallery-4.png";
+import gallery5 from "@/assets/gallery-5.png";
+import gallery6 from "@/assets/gallery-6.png";
+import gallery7 from "@/assets/gallery-7.png";
 
 const Gallery = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -23,8 +28,7 @@ const Gallery = () => {
       category: "renovation",
       title: "Rénovation Complète Toiture",
       location: "Villepinte",
-      before: beforeImg,
-      after: afterImg,
+      image: gallery1,
       description: "Rénovation complète d'une toiture ancienne avec remplacement des tuiles. Travaux incluant la dépose complète, traitement de charpente, isolation renforcée et pose de nouvelles tuiles.",
     },
     {
@@ -32,8 +36,7 @@ const Gallery = () => {
       category: "couverture",
       title: "Pose de Nouvelle Couverture",
       location: "Aulnay-sous-Bois",
-      before: beforeImg,
-      after: afterImg,
+      image: gallery2,
       description: "Installation d'une nouvelle couverture en tuiles plates sur maison individuelle. Travaux réalisés en 5 jours avec garantie décennale.",
     },
     {
@@ -41,8 +44,7 @@ const Gallery = () => {
       category: "zinguerie",
       title: "Réfection Complète Zinguerie",
       location: "Sevran",
-      before: beforeImg,
-      after: afterImg,
+      image: gallery3,
       description: "Remplacement complet des gouttières, chéneaux et descentes. Installation de zinc naturel pour une durabilité optimale.",
     },
     {
@@ -50,9 +52,32 @@ const Gallery = () => {
       category: "renovation",
       title: "Rénovation Toiture et Isolation",
       location: "Tremblay-en-France",
-      before: beforeImg,
-      after: afterImg,
+      image: gallery4,
       description: "Rénovation avec isolation thermique renforcée, pose de fenêtres de toit Velux et ravalement de façade associé.",
+    },
+    {
+      id: 5,
+      category: "couverture",
+      title: "Pose de Toiture en Ardoise",
+      location: "Seine-Saint-Denis",
+      image: gallery5,
+      description: "Pose d'une toiture en ardoise naturelle pour une maison de caractère. Travail soigné et respectueux de l'architecture d'origine.",
+    },
+    {
+      id: 6,
+      category: "zinguerie",
+      title: "Installation de Gouttières",
+      location: "Paris",
+      image: gallery6,
+      description: "Pose de gouttières en aluminium sur mesure avec habillage en zinc. Évacuation des eaux pluviales optimisée.",
+    },
+    {
+      id: 7,
+      category: "renovation",
+      title: "Ravalement de Façade",
+      location: "Bondy",
+      image: gallery7,
+      description: "Ravalement complet de façade avec isolation par l'extérieur. Amélioration de l'étanchéité et de l'isolation thermique.",
     },
   ];
 
@@ -99,59 +124,38 @@ const Gallery = () => {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           {filteredProjects.length > 0 ? (
-            <div className="grid gap-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredProjects.map((project, index) => (
                 <div 
                   key={project.id} 
-                  className="max-w-6xl mx-auto animate-fade-in"
+                  className="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 animate-fade-in"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="mb-8 text-center">
-                    <span className="inline-block bg-accent/10 text-accent px-4 py-1 rounded-full text-sm font-semibold mb-3">
-                      {categories.find(c => c.id === project.category)?.label}
-                    </span>
-                    <h2 className="text-3xl font-bold mb-2">{project.title}</h2>
-                    <p className="text-muted-foreground text-lg">📍 {project.location}</p>
-                  </div>
-                  
-                  {/* Before/After Comparison with enhanced design */}
-                  <div className="bg-card border border-border rounded-2xl p-6 md:p-8 shadow-xl">
-                    <div className="grid md:grid-cols-2 gap-8">
-                      <div className="space-y-4">
-                        <div className="relative">
-                          <div className="absolute -top-3 left-6 bg-destructive text-destructive-foreground px-6 py-2 rounded-lg font-bold text-lg shadow-lg z-10">
-                            ❌ Avant
-                          </div>
-                          <div className="rounded-xl overflow-hidden shadow-2xl border-4 border-destructive/20 hover:border-destructive/40 transition-all">
-                            <img
-                              src={project.before}
-                              alt={`${project.title} - Avant`}
-                              className="w-full h-96 object-cover hover:scale-105 transition-transform duration-300"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div className="space-y-4">
-                        <div className="relative">
-                          <div className="absolute -top-3 left-6 bg-accent text-white px-6 py-2 rounded-lg font-bold text-lg shadow-lg z-10">
-                            ✓ Après
-                          </div>
-                          <div className="rounded-xl overflow-hidden shadow-2xl border-4 border-accent/20 hover:border-accent/60 transition-all">
-                            <img
-                              src={project.after}
-                              alt={`${project.title} - Après`}
-                              className="w-full h-96 object-cover hover:scale-105 transition-transform duration-300"
-                            />
-                          </div>
-                        </div>
+                  <div className="relative h-64 overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                      <div>
+                        <h3 className="text-white text-xl font-bold mb-1">{project.title}</h3>
+                        <p className="text-white/90 text-sm">📍 {project.location}</p>
                       </div>
                     </div>
-                    
-                    <div className="mt-8 pt-6 border-t border-border">
-                      <p className="text-muted-foreground text-lg leading-relaxed">
-                        {project.description}
-                      </p>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                    <p className="text-muted-foreground mb-4">{project.description}</p>
+                    <div className="flex justify-between items-center">
+                      <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-sm font-medium rounded-full">
+                        {categories.find(c => c.id === project.category)?.label}
+                      </span>
+                      <Button asChild variant="outline" size="sm">
+                        <Link to={`/contact?project=${project.id}`}>
+                          Demander un devis
+                        </Link>
+                      </Button>
                     </div>
                   </div>
                 </div>

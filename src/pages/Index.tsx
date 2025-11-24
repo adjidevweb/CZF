@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Phone, Shield, Clock, Award, CheckCircle2, Home, Wrench, Droplets } from "lucide-react";
+import { Phone, Shield, Clock, Award, CheckCircle2, Home, Wrench, Droplets, Star, Quote } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingCallButton from "@/components/FloatingCallButton";
@@ -9,6 +9,9 @@ import heroImage from "@/assets/hero-roofing.jpg";
 import veluxLogo from "@/assets/velux-logo.png";
 import artisanLogo from "@/assets/artisan-logo.png";
 import decennaleLogo from "@/assets/decennale-logo.webp";
+import couvertureImg from "@/assets/service-couverture.jpg";
+import zinguerieImg from "@/assets/service-zinguerie.jpg";
+import demoussageImg from "@/assets/service-demoussage.png";
 
 const Index = () => {
   const services = [
@@ -16,16 +19,19 @@ const Index = () => {
       icon: Home,
       title: "Couverture",
       description: "Installation et rénovation de tous types de toitures : tuiles, ardoises, zinc. Travail soigné et durable.",
+      image: couvertureImg,
     },
     {
       icon: Wrench,
       title: "Zinguerie",
       description: "Pose et réparation de gouttières, chéneaux, noues. Garantie étanchéité parfaite de votre toiture.",
+      image: zinguerieImg,
     },
     {
       icon: Droplets,
       title: "Démoussage",
       description: "Nettoyage professionnel de votre toiture. Prolongez la durée de vie de votre couverture.",
+      image: demoussageImg,
     },
   ];
 
@@ -33,6 +39,33 @@ const Index = () => {
     { icon: Shield, title: "Certifié RGE & Qualibat", desc: "Qualité garantie" },
     { icon: Clock, title: "Intervention Rapide", desc: "24h/24 - 7j/7" },
     { icon: Award, title: "+20 ans d'expérience", desc: "Expertise reconnue" },
+  ];
+
+  const testimonials = [
+    {
+      id: 1,
+      name: "Marie D.",
+      location: "Villepinte",
+      rating: 5,
+      content: "Excellente intervention pour la réfection complète de notre toiture. Travail soigné, équipe professionnelle et ponctuelle. Je recommande vivement C.Z.F Rénovation !",
+      date: "15 novembre 2023"
+    },
+    {
+      id: 2,
+      name: "Thomas L.",
+      location: "Sevran",
+      rating: 5,
+      content: "Réparation rapide de ma toiture après la tempête. Intervention rapide, devis respecté et travail impeccable. Je suis très satisfait du résultat.",
+      date: "2 novembre 2023"
+    },
+    {
+      id: 3,
+      name: "Sophie M.",
+      location: "Aulnay-sous-Bois",
+      rating: 5,
+      content: "Pose d'une nouvelle charpente et couverture. L'équipe a été à l'écoute de mes besoins et le résultat est à la hauteur de mes attentes. Professionnalisme et savoir-faire au rendez-vous.",
+      date: "22 octobre 2023"
+    }
   ];
 
   return (
@@ -172,6 +205,79 @@ const Index = () => {
                 Protection complète pendant 10 ans sur tous nos travaux
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Témoignages */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Ce que disent nos clients</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Découvrez les retours de nos clients satisfaits par nos services
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                id: 1,
+                name: "Marie D.",
+                location: "Villepinte",
+                rating: 5,
+                content: "Excellente intervention pour la réfection complète de notre toiture. Travail soigné, équipe professionnelle et ponctuelle. Je recommande vivement C.Z.F Rénovation !",
+                date: "15 novembre 2023"
+              },
+              {
+                id: 2,
+                name: "Thomas L.",
+                location: "Sevran",
+                rating: 5,
+                content: "Réparation rapide de ma toiture après la tempête. Intervention rapide, devis respecté et travail impeccable. Je suis très satisfait du résultat.",
+                date: "2 novembre 2023"
+              },
+              {
+                id: 3,
+                name: "Sophie M.",
+                location: "Aulnay-sous-Bois",
+                rating: 5,
+                content: "Pose d'une nouvelle charpente et couverture. L'équipe a été à l'écoute de mes besoins et le résultat est à la hauteur de mes attentes.",
+                date: "22 octobre 2023"
+              }
+            ].map((testimonial) => (
+              <div key={testimonial.id} className="bg-card p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="flex items-center mb-4">
+                  <div className="bg-primary/10 p-3 rounded-full mr-4">
+                    <Quote className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg">{testimonial.name}</h3>
+                    <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+                  </div>
+                </div>
+                
+                <div className="flex mb-3">
+                  {[...Array(5)].map((_, i) => (
+                    <Star 
+                      key={i} 
+                      className={`h-5 w-5 ${i < testimonial.rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`} 
+                    />
+                  ))}
+                </div>
+                
+                <p className="text-muted-foreground mb-4 italic">"{testimonial.content}"</p>
+                <p className="text-sm text-muted-foreground">{testimonial.date}</p>
+              </div>
+            ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <Button asChild variant="outline">
+              <Link to="/testimonials" className="flex items-center mx-auto">
+                Voir tous les témoignages
+              </Link>
+            </Button>
           </div>
         </div>
       </section>

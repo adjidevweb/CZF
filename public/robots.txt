@@ -1,13 +1,34 @@
+# Fichier robots.txt pour C.Z.F Rénovation
+# Dernière mise à jour : 24/11/2025
+
+# Tous les robots sont les bienvenus
+User-agent: *
+Allow: /
+
+# Désactiver l'indexation des dossiers spéciaux
+Disallow: /admin/
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /search/
+Disallow: /*?*
+
+# Autoriser les robots des moteurs de recherche majeurs
 User-agent: Googlebot
 Allow: /
+Disallow: /search
 
 User-agent: Bingbot
 Allow: /
+Disallow: /search
 
+# Réseaux sociaux
 User-agent: Twitterbot
 Allow: /
 
 User-agent: facebookexternalhit
+Allow: /
+
+# Plan du site
 Allow: /
 
 User-agent: *

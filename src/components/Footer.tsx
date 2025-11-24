@@ -46,6 +46,11 @@ const Footer = () => {
                   Contact
                 </Link>
               </li>
+              <li>
+                <Link to="/legal" className="text-sm hover:text-accent transition-colors">
+                  Mentions Légales
+                </Link>
+              </li>
             </ul>
           </div>
 

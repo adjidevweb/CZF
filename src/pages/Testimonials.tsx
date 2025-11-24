@@ -82,6 +82,84 @@ const Testimonials = () => {
         </div>
       </section>
 
+      {/* Add Testimonial Form */}
+      <section className="py-12 bg-muted/20">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="bg-card p-8 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-bold mb-6">Ajouter votre témoignage</h2>
+            <form className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium mb-1">
+                    Votre nom *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    required
+                    className="w-full px-4 py-2 border border-input rounded-md focus:ring-2 focus:ring-accent focus:outline-none"
+                    placeholder="Votre nom"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="location" className="block text-sm font-medium mb-1">
+                    Ville *
+                  </label>
+                  <input
+                    type="text"
+                    id="location"
+                    required
+                    className="w-full px-4 py-2 border border-input rounded-md focus:ring-2 focus:ring-accent focus:outline-none"
+                    placeholder="Votre ville"
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Note *
+                </label>
+                <div className="flex space-x-1">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <button
+                      key={star}
+                      type="button"
+                      className="text-2xl focus:outline-none"
+                      onClick={() => {}}
+                    >
+                      <Star className="h-8 w-8 text-gray-300 hover:text-yellow-400" />
+                    </button>
+                  ))}
+                </div>
+                <div className="flex justify-between text-xs text-muted-foreground mt-1">
+                  <span>Pas satisfait</span>
+                  <span>Très satisfait</span>
+                </div>
+              </div>
+              
+              <div>
+                <label htmlFor="testimonial" className="block text-sm font-medium mb-1">
+                  Votre témoignage *
+                </label>
+                <textarea
+                  id="testimonial"
+                  required
+                  rows={4}
+                  className="w-full px-4 py-2 border border-input rounded-md focus:ring-2 focus:ring-accent focus:outline-none"
+                  placeholder="Décrivez votre expérience avec nos services..."
+                ></textarea>
+              </div>
+              
+              <div className="pt-2">
+                <Button type="submit" className="w-full sm:w-auto">
+                  Envoyer mon témoignage
+                </Button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials Grid */}
       <section className="py-20">
         <div className="container mx-auto px-4">

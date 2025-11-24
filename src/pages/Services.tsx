@@ -8,6 +8,12 @@ import ServiceCard from "@/components/ServiceCard";
 import couvertureImg from "@/assets/service-couverture.jpg";
 import zinguerieImg from "@/assets/service-zinguerie.jpg";
 import isolationImg from "@/assets/service-isolation.jpg";
+import reparationImg from "@/assets/service-reparation.png";
+import demoussageImg from "@/assets/service-demoussage.png";
+import peintureImg from "@/assets/service-peinture.png";
+import fenetreToitImg from "@/assets/service-fenetre-toit.png";
+import gouttiereImg from "@/assets/service-gouttiere.png";
+import ravalementImg from "@/assets/service-ravalement.png";
 
 const Services = () => {
   const services = [
@@ -27,31 +33,38 @@ const Services = () => {
       icon: HardHat,
       title: "Réparation de Toiture",
       description: "Réparation de fuites, remplacement de tuiles cassées, réfection de joints. Intervention rapide pour tous types de problèmes de toiture.",
+      image: reparationImg,
+      
     },
     {
       icon: Droplets,
       title: "Nettoyage / Démoussage",
       description: "Nettoyage professionnel de votre toiture pour éliminer mousses, lichens et algues. Traitement préventif pour prolonger la durée de vie de votre couverture.",
+      image: demoussageImg,
     },
     {
       icon: Wind,
       title: "Peinture sur Toiture",
       description: "Application de peinture spéciale toiture pour rénover l'aspect de votre couverture. Protection et esthétique améliorées.",
+      image: peintureImg,
     },
     {
       icon: Wind,
       title: "Pose de Fenêtre de Toit",
       description: "Installation de fenêtres de toit type Velux pour apporter lumière naturelle et ventilation. Pose étanche et conforme aux normes.",
+      image: fenetreToitImg,
     },
     {
       icon: Droplets,
       title: "Pose de Gouttière",
       description: "Installation de gouttières en zinc, aluminium ou PVC. Assure l'évacuation efficace des eaux pluviales pour protéger votre façade.",
+      image: gouttiereImg,
     },
     {
       icon: Home,
       title: "Ravalement Façade",
       description: "Ravalement complet de façade : nettoyage, réparation des fissures, enduit, peinture. Redonnez un coup de neuf à votre habitation.",
+      image: ravalementImg,
     },
     {
       icon: HardHat,
